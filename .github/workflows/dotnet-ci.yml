@@ -24,9 +24,21 @@ jobs:
     - name: Restore dependencies 
       run: dotnet restore 
 
-
     - name: Build
       run: dotnet build --configuration Release --no-restore
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
+    - name: Publish
+      run: dotnet publish --configuration Release --no-build -o ./publish
+
+    - name: Stop running app (if exists)
+      run: |
+        taskkill /F /IM github-practice.exe || echo "App not running"
+
+    - name: Start app
+  
+      run: |
+        cd C:\inetpub\wwwroot\github-actions
+        start github-practice.exe
