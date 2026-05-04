@@ -10,7 +10,7 @@ on:
 
 jobs:
   build: 
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Windows, X64]
     
     steps:
     - name: Checkout code
@@ -38,7 +38,11 @@ jobs:
         taskkill /F /IM github-practice.exe || echo "App not running"
 
     - name: Start app
-  
       run: |
         cd C:\inetpub\wwwroot\github-actions
         start github-practice.exe
+      shell: powershell
+
+    - name: Restart IIS
+      run: iisreset
+      shell: powershell
