@@ -31,7 +31,7 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: Publish
-      run: dotnet publish --configuration Release --no-build -o ./publish
+      run: dotnet publish --configuration Release -o C:\inetpub\wwwroot\github-actions
 
     - name: Stop running app (if exists)
       run: |
