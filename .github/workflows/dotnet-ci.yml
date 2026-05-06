@@ -35,7 +35,8 @@ jobs:
 
     - name: Stop running app (if exists)
       run: |
-        taskkill /F /IM github-practice.exe || echo "App not running"
+        taskkill /F /IM github-practice.exe 
+      continue-on-error: true
 
     - name: Start app
       run: |
